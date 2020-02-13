@@ -1,7 +1,7 @@
 
 # .Net Core Api Client
 
-Based off of the HttpClient. This is meant to be areusable package to make Api calls easier to deal with out of the gate.
+Based off of HttpClient. This is meant to be a reusable package to make Api calls easier to deal with out of the gate.
 
 ## Future Enhancements
 
