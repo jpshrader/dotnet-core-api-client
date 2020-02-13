@@ -1,7 +1,10 @@
 ### DotnetCore ###
 # .NET Core build folders
 /bin
+*/bin
 /obj
+*/obj
+
 
 # User-specific files
 *.rsuser
