@@ -22,3 +22,6 @@ steps:
 
 - script: dotnet build dotnet-core-api-client/dotnet-core-api-client.sln --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+
+- script: dotnet test dotnet-core-api-client/dotnet-core-api-client.sln --configuration $(buildConfiguration)
+  displayName: 'dotnet test $(buildConfiguration)'
