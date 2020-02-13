@@ -5,3 +5,4 @@ C:\projects\dotnet-core-api-client\dotnet-core-api-client\bin\Debug\netcoreapp3.
 C:\projects\dotnet-core-api-client\dotnet-core-api-client\bin\Debug\netcoreapp3.1\dotnet-core-api-client.pdb
 C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.dll
 C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.pdb
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.csprojAssemblyReference.cache
