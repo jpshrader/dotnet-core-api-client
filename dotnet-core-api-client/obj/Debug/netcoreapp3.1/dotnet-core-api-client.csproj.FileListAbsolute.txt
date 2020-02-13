@@ -1,0 +1,7 @@
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.AssemblyInfoInputs.cache
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.AssemblyInfo.cs
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\bin\Debug\netcoreapp3.1\dotnet-core-api-client.deps.json
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\bin\Debug\netcoreapp3.1\dotnet-core-api-client.dll
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\bin\Debug\netcoreapp3.1\dotnet-core-api-client.pdb
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.dll
+C:\projects\dotnet-core-api-client\dotnet-core-api-client\obj\Debug\netcoreapp3.1\dotnet-core-api-client.pdb
