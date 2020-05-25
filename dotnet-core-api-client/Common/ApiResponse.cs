@@ -32,7 +32,7 @@ namespace dotnet_core_api_client.Common {
 			var statusCode = (int)StatusCode;
 			return statusCode >= 200 && statusCode <= 299;
 		}
-		
+
 		public bool IsClientErrorCode() {
 			var statusCode = (int)StatusCode;
 			return statusCode >= 400 && statusCode <= 499;

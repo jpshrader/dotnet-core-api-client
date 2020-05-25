@@ -13,11 +13,12 @@ namespace dotnet_core_api_client.Client {
 		private static readonly IEnumerable<(string key, string value)> emptyParams = Enumerable.Empty<(string key, string value)>();
 
 		public async Task<ApiResponse> MakeApiRequest(
-			Uri requestUri,
+			string requestUrl,
 			RequestMethod requestMethod = RequestMethod.Get,
-			IEnumerable<(string key, string value)> headers = null,
 			ContentType contentType = ContentType.Json,
-			object body = null) {
+			object body = null,
+			IEnumerable<(string key, string value)> queryParams = null,
+			IEnumerable<(string key, string value)> headers = null) {
 			var cookieContainer = new CookieContainer();
 			using var clientHandler = new HttpClientHandler {
 				PreAuthenticate = true,
@@ -25,14 +26,22 @@ namespace dotnet_core_api_client.Client {
 			};
 			using var httpClient = new HttpClient(clientHandler);
 
-			var httpRequestMessage = GetHttpRequestMessage(requestUri, requestMethod, contentType, headers, body);
+			foreach (var (key, value) in queryParams ?? emptyParams) {
+				if (requestUrl.Contains('?'))
+					requestUrl = $"{requestUrl}&{key}={value}";
+				else
+					requestUrl = $"{requestUrl}?{key}={value}";
+			}
 
-			return await ApiResponse.GetApiResponse(await httpClient.SendAsync(httpRequestMessage), cookieContainer.GetCookies(requestUri));
+			var uri = new Uri(requestUrl);
+			var httpRequestMessage = GetHttpRequestMessage(uri, requestMethod, contentType, headers, body);
+
+			return await ApiResponse.GetApiResponse(await httpClient.SendAsync(httpRequestMessage), cookieContainer.GetCookies(uri));
 		}
 
-		private static HttpRequestMessage GetHttpRequestMessage(Uri requestUrl, RequestMethod requestMethod, ContentType contentType, IEnumerable<(string key, string value)> headers, object body) {
+		private static HttpRequestMessage GetHttpRequestMessage(Uri requestUri, RequestMethod requestMethod, ContentType contentType, IEnumerable<(string key, string value)> headers, object body) {
 			var httpRequestMessage = new HttpRequestMessage {
-				RequestUri = requestUrl,
+				RequestUri = requestUri,
 				Method = requestMethod.ToHttpMethod(),
 				Content = GetHttpContent(contentType, body)
 			};
