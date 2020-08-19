@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace dotnet_core_api_client.Common {
 	public class ApiResponse {
@@ -25,6 +27,14 @@ namespace dotnet_core_api_client.Common {
 		public string Body { get; private set; }
 
 		public T ToObject<T>() {
+			var contentType = Headers.SingleOrDefault(h => h.Key.ToLower() == "content-type");
+			if (contentType.Value.FirstOrDefault() == ContentTypeExtensions.XmlContentType) {
+				var serialiser = new XmlSerializer(typeof(T));
+				using var reader = new StringReader(Body);
+
+				return (T)serialiser.Deserialize(reader);
+			}
+
 			return JsonConvert.DeserializeObject<T>(Body);
 		}
 
