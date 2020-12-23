@@ -27,10 +27,7 @@ namespace dotnet_core_api_client.Client {
 			using var httpClient = new HttpClient(clientHandler);
 
 			foreach (var (key, value) in queryParams ?? emptyParams) {
-				if (requestUrl.Contains('?'))
-					requestUrl = $"{requestUrl}&{key}={value}";
-				else
-					requestUrl = $"{requestUrl}?{key}={value}";
+				requestUrl = AddUrlSegment(requestUrl, key, value);
 			}
 
 			var uri = new Uri(requestUrl);
@@ -57,6 +54,13 @@ namespace dotnet_core_api_client.Client {
 				return null;
 
 			return new StringContent(contentType.ToHttpContent(body), Encoding.Default, contentType.ToMediaTypeString());
+		}
+
+		private static string AddUrlSegment(string requestUrl, string key, string value) {
+			if (requestUrl.Contains('?'))
+				return $"{requestUrl}&{key}={value}";
+
+			return $"{requestUrl}?{key}={value}";
 		}
 	}
 }
